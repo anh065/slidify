@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Regression model built for the mtcars dataset</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Regression model built for the mtcars dataset">
+  <meta name="author" content="Anh Bui">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Regression model built for the mtcars dataset</h1>
+    <h2>Developing Data Products Course Assignment</h2>
+    <p>Anh Bui<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>A Brief Description</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Using the <em>mtcars</em> dataset, an interactive linear regression model describing the dependence of miles per gallon (mpg) variable on other parameters is constructed and implemented in a Shiny app with the number of regressors varied. </p></li>
+<li><p>An user can select different combinations of regressors and examine the effect of the selections on the model characteristics.</p></li>
+<li><p>The Shiny app consists of the ui.R and server.R files which should be located in the same directory. An user can run the app with the runApp() command.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Shiny ui.R and server.R Codes</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>ui.R contains the header, side, and main panels</p>
+
+<ul>
+<li>The side panel includes a checkboxGroupInput with a number of checkboxes for regression variables</li>
+<li>The main panel includes two text and one plot outputs</li>
+</ul></li>
+<li><p>server.R contains the code which performs the following tasks</p>
+
+<ul>
+<li>Selecting a subset of data depending on checkbox input</li>
+<li>Constructing a linear model of mpg as a function of regression variables</li>
+<li>Creating the text and plot outputs</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Example of A Linear Model with Two Regressors</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">data(mtcars)
+model &lt;- lm(mpg ~ factor(am)+wt,data=mtcars)
+summary(model)$coef
+</code></pre>
+
+<pre><code>##                Estimate Std. Error     t value     Pr(&gt;|t|)
+## (Intercept) 37.32155131  3.0546385 12.21799285 5.843477e-13
+## factor(am)1 -0.02361522  1.5456453 -0.01527855 9.879146e-01
+## wt          -5.35281145  0.7882438 -6.79080719 1.867415e-07
+</code></pre>
+
+<p>Variance explained</p>
+
+<pre><code class="r">summary(model)$adj.r.squared
+</code></pre>
+
+<pre><code>## [1] 0.7357889
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Screen Capture of the Shiny App Run</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/capture.png" alt=""></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='A Brief Description'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Shiny ui.R and server.R Codes'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Example of A Linear Model with Two Regressors'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Screen Capture of the Shiny App Run'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
